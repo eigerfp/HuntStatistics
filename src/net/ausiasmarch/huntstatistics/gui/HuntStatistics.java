@@ -10,6 +10,7 @@ import net.ausiasmarch.huntstatistics.utils.*;
 import java.util.*;
 import java.awt.Color;
 import javax.swing.*;
+import net.ausiasmarch.common.Convert;
 
 /**
  *
@@ -21,6 +22,8 @@ public class HuntStatistics extends javax.swing.JFrame {
     private final GestorCazadores gestorCazadores;
     // Lista de cazadores
     private final List<Cazador> cazadores;
+    // Lista de piezas abatidas
+    private final List<PiezaAbatida> abatidos;
     // Nombres de las columnas.
     private final String[] columnaOrdenar = {"Nombre", "Lugar", "Fecha", "Animal", "Arma"};
     private final String[] columnaCalcular = {"Animal", "Nº Abatidos", "Arma"};
@@ -32,10 +35,11 @@ public class HuntStatistics extends javax.swing.JFrame {
     public HuntStatistics() {
         initComponents();
         setLocationRelativeTo(null);
-        cazadores = new ArrayList();
-        gestorCazadores = new GestorCazadores();
         initGrid();
-
+        cazadores = new ArrayList();
+        abatidos = new ArrayList();
+        gestorCazadores = new GestorCazadores();
+        
     }
 
     /**
@@ -323,6 +327,11 @@ public class HuntStatistics extends javax.swing.JFrame {
         jButtonAnyadir.setText("Añadir registro");
         jButtonAnyadir.setEnabled(false);
         jButtonAnyadir.setMargin(new java.awt.Insets(3, 9, 3, 9));
+        jButtonAnyadir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnyadirActionPerformed(evt);
+            }
+        });
 
         jPanelResults.setBackground(new java.awt.Color(220, 220, 220));
         jPanelResults.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -767,7 +776,7 @@ public class HuntStatistics extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalcularActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButtonCalcularActionPerformed
 
     private void jButtonLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarActionPerformed
@@ -829,6 +838,32 @@ public class HuntStatistics extends javax.swing.JFrame {
     private void jComboBoxJornadaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxJornadaItemStateChanged
         enabledButton();
     }//GEN-LAST:event_jComboBoxJornadaItemStateChanged
+
+    private void jButtonAnyadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnyadirActionPerformed
+        StringBuilder sb = new StringBuilder();
+        String nombre, localizacion, fecha, animal, arma, municion, jornada;
+        int peso, distancia;
+        boolean rehala;
+        Cazador cazador;
+
+        ValidatorAnnotation validator = new ValidatorAnnotation();
+
+        nombre = jTextFieldNombre.getText();
+        rehala = jCheckBoxRehala.isSelected();
+        localizacion = jTextFieldLocalizacion.getText();
+        fecha = jTextFieldFecha.getText();
+        animal = jComboBoxAnimal.getSelectedItem().toString();
+        arma = jComboBoxArma.getSelectedItem().toString();
+        municion = jTextFieldMunicion.getText();
+        peso = Convert.parseInt(jTextFieldPeso.getText());
+        distancia = Convert.parseInt(jTextFieldDistancia.getText());
+
+        //if (gestorCazadores.buscarCazador(nombre) != null) {
+
+        //}
+
+
+    }//GEN-LAST:event_jButtonAnyadirActionPerformed
 
     public void initGrid() {
         createGrid(gridOrdenar, columnaOrdenar);
