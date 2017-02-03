@@ -5,12 +5,12 @@
  */
 package net.ausiasmarch.huntstatistics.modelo;
 
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 
 /**
  *
- * @author a053380739q
+ * @author Ariadna Igual
  */
 public class PiezaAbatida {
 

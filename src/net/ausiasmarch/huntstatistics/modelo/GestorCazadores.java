@@ -29,9 +29,16 @@ public class GestorCazadores {
         this.cazador = cazador;
     }
     
+    public int contCazadores(){
+        int cont = 0;
+        for (Cazador cazador : cazador){
+            cont += cazador.getNombre().length();
+        }
+        return cont;
+    }
     public Cazador buscarCazador(String nombre){
-        //Collections.sort(cazador, new NombreCazadorComparator());
-        //int index = Collections.binarySearch(cazador, new Cazador(nombre, animal, 0),)
+        Collections.sort(cazador, new CazadorComparator());
+        //int index = Collections.binarySearch(cazador, new Cazador(nombre),)
         return null;
     }
 }
