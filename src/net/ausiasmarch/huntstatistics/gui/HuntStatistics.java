@@ -36,10 +36,12 @@ public class HuntStatistics extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         initGrid();
+
         cazadores = new ArrayList();
         abatidos = new ArrayList();
         gestorCazadores = new GestorCazadores();
         
+
     }
 
     /**
